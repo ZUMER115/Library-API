@@ -24,7 +24,7 @@ const updateGame = async (req, res) => {
     if (!game || !developer || !release_date) {
         return res.status(400).json({message: `Bad request: Please include all fields (game, developer, release_date).`});
     }
-    const query = await db.query(`UPDATE games SET game = $1, developer = $2, release_date = $3 WHERE id = $4 RETURNING *`, [game, developer, release_date, id]);
+    const query = await db.query(`UPDATE games SET game = $1, developer = $2, release_date = $3 WHERE id = $4 RETURNING *`, [game, developer, release_date]);
     if (query.rows.length === 0) {
         return res.status(404).json({message: `Game with id ${id} not found.`});
     }
