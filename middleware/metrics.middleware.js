@@ -10,7 +10,7 @@ const metricRecording = (req, res, next) => {
         end({
             method: req.method,
             route: req.path,
-            status: req.statusCode,
+            status: res.statusCode,
     });
     })
     console.log("Used route: ", req.path);
