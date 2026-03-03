@@ -1,0 +1,24 @@
+Library API
+
+Overview
+Dockerized REST API built with Node.js and Express featuring JWT authentication, PostgreSQL integration, and Prometheus-based observability with Grafana dashboards.
+
+Tech Stack
+- Node.js
+- Express
+- PostgreSQL
+- Docker/Docker Compose
+- Prometheus
+- Grafana
+- JWT Authentication
+
+Architecture
+Client → Express API → PostgreSQL
+API exposes /metrics → Prometheus scrapes → Grafana visualizes
+
+Features
+- Secure user registration and login using JWT
+- RESTful CRUD operations for library resources
+- Prometheus metrics exposed at route /metrics
+- Containerized multi-service environment (API, DB, Prometheus, Grafana)
+- Real-time request monitoring via Grafana dashboards
