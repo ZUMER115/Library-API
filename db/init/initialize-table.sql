@@ -1,0 +1,7 @@
+CREATE TABLE games (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	game TEXT NOT NULL,
+	developer TEXT NOT NULL,
+	release_date DATE NOT NULL
+);
+

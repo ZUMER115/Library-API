@@ -1,0 +1,39 @@
+services:
+  db:
+    image: 
+      postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gameLibraryDB
+    volumes:
+       - postgres_data:/var/lib/postgresql/data
+       - ./db/init:/docker-entrypoint-initdb.d
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PORT: 8080
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
+      DB_NAME: gameLibraryDB
+      JWT_SECRET: secret_formula
+    ports:
+      - 8081:8080
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+
+
+volumes:
+  postgres_data:
