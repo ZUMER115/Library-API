@@ -1,0 +1,19 @@
+name: Deploy API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      -name: Checkout repo
+      -uses: actions/checkout@v4
+
+      -name: Deploy containers
+      -run:
+          cd ~git-repos/game-library
+          git pull
+          docker compose up -d --build
