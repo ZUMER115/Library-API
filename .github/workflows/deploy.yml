@@ -10,10 +10,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout repo
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Deploy containers
-      - run: |
+        run: |
           cd ~git-repos/game-library/
           git pull
           docker compose up -d --build
